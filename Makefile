@@ -17,7 +17,9 @@ ifeq ($(GOLANG),yes)
 	$(MAKE) -C go $@
 	rm -f cap/go.sum
 endif
+ifneq ($(TESTS),no)
 	$(MAKE) -C tests $@
+endif
 	$(MAKE) -C progs $@
 	$(MAKE) -C doc $@
 	$(MAKE) -C kdebug $@
@@ -43,7 +45,9 @@ release: distclean
 
 test: all
 	$(MAKE) -C libcap $@
+ifneq ($(TESTS),no)
 	$(MAKE) -C tests $@
+endif
 ifneq ($(PAM_CAP),no)
 	$(MAKE) -C pam_cap $@
 endif
@@ -56,7 +60,9 @@ ktest: all
 	$(MAKE) -C kdebug test
 
 sudotest: all
+ifneq ($(TESTS),no)
 	$(MAKE) -C tests $@
+endif
 ifneq ($(PAM_CAP),no)
 	$(MAKE) -C pam_cap $@
 endif
