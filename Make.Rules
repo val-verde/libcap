@@ -109,7 +109,7 @@ ifeq ($(GOLANG),yes)
 GOROOT := $(shell $(GO) env GOROOT)
 GOCGO := $(shell if [ "$(shell $(GO) env CGO_ENABLED)" = 1 ]; then echo yes ; else echo no ; fi)
 GOOSARCH := $(shell $(GO) env GOHOSTOS)_$(shell $(GO) env GOHOSTARCH)
-CGO_CFLAGS := -I$(topdir)/libcap/include
+CGO_CFLAGS := -I$(topdir)/libcap/include $(COPTS)
 CGO_LDFLAGS := -L$(topdir)/libcap
 CGO_LDFLAGS_ALLOW := -Wl,-?-wrap[=,][^-.@][^,]*
 CGO_REQUIRED=$(shell $(topdir)/go/cgo-required.sh)
