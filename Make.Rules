@@ -116,7 +116,7 @@ ifeq ($(CGO_REQUIRED),1)
 # vestige of legacy workarounds then.
 CGO_LDFLAGS_ALLOW := CGO_LDFLAGS_ALLOW="-Wl,-?-wrap[=,][^-.@][^,]*"
 endif
-CGO_CFLAGS := -I$(topdir)/libcap/include
+CGO_CFLAGS := -I$(topdir)/libcap/include $(COPTS)
 CGO_LDFLAGS := -L$(topdir)/libcap
 endif
 endif
