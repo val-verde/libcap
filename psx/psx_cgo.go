@@ -7,7 +7,7 @@ import (
 	"syscall"
 )
 
-// #cgo LDFLAGS: -lpthread -Wl,-wrap,pthread_create
+// #cgo LDFLAGS: -pthread -Wl,-wrap,pthread_create
 //
 // #include <errno.h>
 // #include "psx_syscall.h"
