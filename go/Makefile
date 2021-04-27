@@ -42,7 +42,7 @@ $(topdir)/libcap/cap_names.h:
 	make -C $(topdir)/libcap cap_names.h
 
 good-names.go: $(topdir)/libcap/cap_names.h vendor/$(IMPORTDIR)/cap mknames.go
-	CC="$(CC)" $(GO) run -mod=vendor mknames.go --header=$< --textdir=$(topdir)/doc/values | gofmt > $@ || rm -f $@
+	CC="$(CC)" GOARCH=$(GOHOSTARCH) GOOS=$(GOHOSTOS) $(GO) run -mod=vendor mknames.go --header=$< --textdir=$(topdir)/doc/values | gofmt > $@ || rm -f $@
 	diff -u ../cap/names.go $@
 
 PSXGOPACKAGE: vendor/$(IMPORTDIR)/psx ../psx/*.go $(DEPS)
