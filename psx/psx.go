@@ -56,7 +56,7 @@ import (
 )
 
 // #cgo CFLAGS: -I${SRCDIR}/include
-// #cgo LDFLAGS: -lpthread -Wl,-wrap,pthread_create
+// #cgo LDFLAGS: -pthread -Wl,-wrap,pthread_create
 //
 // #include <errno.h>
 // #include <sys/psx_syscall.h>
